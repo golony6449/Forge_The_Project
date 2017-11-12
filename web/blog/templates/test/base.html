@@ -21,7 +21,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:100%;z-index:10000000;">
-    <a class="navbar-brand" href="#"><span><img src="{% static 'Demo/Icon/Forge-black2.png' %}" alt="">&nbsp;&nbsp;FTP</span></a>
+    <a class="navbar-brand" href="{% url 'index' %}"><span><img src="{% static 'Demo/Icon/Forge-black2.png' %}" alt="">&nbsp;&nbsp;FTP</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -82,7 +82,14 @@
     </div>
   </nav>
     <!-- 상단 레이아웃 완성 -->
+
 {% block content %} {% endblock %}
 
+  <div class="jumbotron">
+      <h1 class="text-left" style="font : 20px Segoe Script; color : white">17조 웹프로그래밍 팀프로젝트</h1><br>
+      <h1 class="text-left" style="font : 15px Segoe Script; color : white">프론트앤드 - 김윤기, 문윤기</h1><br>
+      <h1 class="text-left" style="font : 15px Segoe Script; color : white">백엔드 - 박성흠</h1><br>
+      <h1 class="text-left" style="font : 15px Segoe Script; color : white">Powered by Bootstrap, Django</h1><br>
+  </div>
 </body>
 </html>

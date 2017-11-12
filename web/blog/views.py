@@ -53,3 +53,6 @@ def viewPost(request,post_id):
 
     return render(request, 'test/post.html',{'title':obj.postName ,'contents':text, 'id':obj.postID,
                                              'author':obj.userID,'when':obj.postDate})
+
+def search(request,keyword):
+    print(keyword)
