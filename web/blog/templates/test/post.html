@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>글</title>
-</head>
-<body>
+{% extends "test/base.html" %}
+
+{% block title %}Pjt Details{% endblock %}
+
+{% block content %}
     <p>글 번호: {{ id }}</p>
     <p>제목: {{ title }}</p>
     <p>글쓴이: {{ author }}</p>
     <p>{{ contents }}</p>
     <p>작성일: {{ when }}</p>
-</body>
-</html>
+{% endblock %}
