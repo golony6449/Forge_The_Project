@@ -94,7 +94,7 @@
     <!--검색창-->
 <form class="" action="index.html" method="get">
       <div class="input-group" id="searchbox">
-        <input type="text" class="form-control" placeholder="Search for Pjt">
+        <input type="text" name="searchKeyword" class="form-control" placeholder="Search for Pjt">
         <div class="input-group-btn">
           <button type="button" class="btn btn-secondary" onclick="DisplayCard()" style="padding-left: 6px;padding-right: 6px;"><span><img src="{% static 'Demo/icon/filter.png' %}" alt=""></span></button>
           <!--
@@ -179,7 +179,7 @@
               <div class="card-block">
                 <h4 class="card-title">{{ post.postName }}</h4>
                 <p class="card-text">Describe Your Project</p>
-                <a href="#" class="btn btn-secondary">Go Pjt-Room</a>
+                <a href="/post/{{ post.postID}}" class="btn btn-secondary">Go Pjt-Room</a>
               </div>
             </div>
           </div>

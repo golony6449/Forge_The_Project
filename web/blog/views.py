@@ -39,7 +39,7 @@ def regpost(request):
     return HttpResponseRedirect('/')
 
 def register(request):
-    return render(request,'test/register.html')
+    return render(request,'test/register.html',)
 
 def reguser(request):
     newUser=User.objects.create_user(request.POST['id'],request.POST['email'],request.POST['pwd'])
