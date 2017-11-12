@@ -1,87 +1,11 @@
-<!DOCTYPE html>
-<html lang='ko'>
+{% extends 'test/base.html' %}
+{% load staticfiles %}
 
-<head>
-  <meta charset='UTF-8'>
-  <title>Forge The Project</title>
-  {% load staticfiles %}
-
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-  <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
-  <script src="{% static 'js/customjavascript.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-  <!--<script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js' %}"></script>-->
-
-  <meta name="viewport" content="width=device-width" , initial-scale="1">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:100%;z-index:10000000;">
-    <a class="navbar-brand" href="#"><span><img src="{% static 'Demo/Icon/Forge-black2.png' %}" alt="">&nbsp;&nbsp;FTP</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <a class="nav-link dropdown-toggle mr-auto" href="#" id="navbarLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Login
-      </a>
-      <div  id="login_dropdown" class="dropdown-menu">
-        <form class="px-4 py-3" method="post" action="/login/">
-            {% csrf_token %}
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Email address</label>
-            <input type="text" class="form-control" name="id" placeholder="email@example.com">
-          </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Password</label>
-            <input type="password" class="form-control" name="pwd" placeholder="Password">
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-        <input type="checkbox" class="form-check-input">
-        Remember me
-      </label>
-          </div>
-          <input type="submit" class="btn btn-primary" value="Sign In"></input>
-        </form>
-        <div class="dropdown-divider"></div>
-        <span class="dropdown-item">Do not have ID? <a href="/register">Sign up</a></span>
-        <a class="dropdown-item" href="#">Forgot password?</a>
-      </div>
-
-      <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+{% block title %}Forge The Project{% endblock %}
 
 <!-- -상단 내비바 끝- -->
 <!-- -대문 시작-->
-
+{% block content %}
   <div class="jumbotron">
     <br>
     <br>
@@ -195,6 +119,4 @@
       </div>
     </div>
   </div>
-</body>
-
-</html>
+{% endblock %}
