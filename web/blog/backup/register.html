@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 가입</title>
+</head>
+<body>
+    <form>
+        {% csrf_token %}
+        <ul>
+            <li>이름: <input type="text" name="name"></li>
+            <li>비밀번호: <input type="password" name="pwd"></li>
+            <li>비밀번호 확인: <input type="password" name="pwd_check"></li>
+            <li>이메일: <input type="email" name="email"></li>
+            <li>생일: <input type="date" name="birth"></li>
+        </ul>
+
+        <input type="submit" value="가입">
+        <input type="reset" value="초기화">
+    </form>
+</body>
+</html>
