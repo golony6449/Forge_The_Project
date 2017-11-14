@@ -16,7 +16,7 @@
     <h1 class="text-center" style="font : 40px Segoe Script; color : white">Forge ' the Project '</h1><br>
 
     <!--검색창-->
-<form class="" action="(% url 'search')" method="get">
+    <form class="" action="{% url "search" %}" method="get">
       <div class="input-group" id="searchbox">
         <input type="text" name="searchKeyword" class="form-control" placeholder="Search for Pjt">
         <div class="input-group-btn">
@@ -95,6 +95,7 @@
       </div>
       <div class="BoardContents">
         <div class="row" id="ContentsRow">
+
           {% if postList %}
             {% for post in postList %}
           <div class="col" id="ContentsElement">
@@ -102,7 +103,7 @@
               <img class="card-img-top" src="{% static "Demo/Icon/resized-DefaultImage.png" %}" alt="Card image cap">
               <div class="card-block">
                 <h4 class="card-title">{{ post.postName }}</h4>
-                <p class="card-text">Describe Your Project</p>
+                <p class="card-text">{{ post.postDescription }}</p>
                 <a href="/post/{{ post.postID}}" class="btn btn-secondary">Go Pjt-Room</a>
               </div>
             </div>

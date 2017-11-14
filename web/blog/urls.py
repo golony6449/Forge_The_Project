@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^write/$', views.write, name='write'),
     url(r'^regpost/$', views.regpost, name='regpost'),
     url(r'^post/(?P<post_id>[0-9]+)/$', views.viewPost, name='viewPost'),
-    url(r'^search/(?P<keyword>[a-zA-Z]+)/$', views.search, name='search'),
+    url(r'^search/$', views.search, name='search'),
 ]
