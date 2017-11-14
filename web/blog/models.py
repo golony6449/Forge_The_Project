@@ -19,6 +19,8 @@ class Context(models.Model):
     postDate=models.DateTimeField(auto_now_add=True)
     userID=models.CharField(max_length=10)
     toDo=models.TextField()
+    postImage=models.ImageField(blank=True)
+    postDescription=models.CharField(max_length=15)
 
     def __str__(self):
-        return str(self.postName) + "    " + str(self.postDate)
+        return str(self.postID) + str(self.postName) + "    " + str(self.postDate)
