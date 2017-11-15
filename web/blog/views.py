@@ -39,11 +39,17 @@ def logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def write(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+
     return render(request,'test/write.html')
 
 def regpost(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+
     newPost=Context(postName=request.POST['title'],contents=request.POST['contents'],
-                    toDo=request.POST['contents'], userID='temp')
+                    toDo=request.POST['contents'], userID=request.user)
     newPost.save()
 
     return HttpResponseRedirect('/')
