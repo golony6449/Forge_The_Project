@@ -10,7 +10,7 @@ div{
 	padding: 0;
 }
 .navbar{
-	position: fixed;
+	/*position: fixed*/;
 	top : 0px;
 }
 #login_dropdown{

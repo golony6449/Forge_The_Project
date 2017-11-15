@@ -68,3 +68,9 @@ def search(request):
     keyword = request.GET.get('searchKeyword',)
     paraDic={'keyword':keyword}
     return render(request,'test/searchRes.html',paraDic)
+
+def mypage(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'test/mypage.html')
