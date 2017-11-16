@@ -125,3 +125,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # https://wayhome25.github.io/django/2017/05/10/media-file/
 MEDIA_URL = '/static/images/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+
+SESSION_COOKIE_AGE=1800

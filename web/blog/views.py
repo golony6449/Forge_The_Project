@@ -12,7 +12,7 @@ from django.contrib import sessions
 def index(request):
     list=Context.objects.order_by('postID')
     paraDic={'postList':list}
-    temp = list[0].postImage.url
+    # temp = list[0].postImage.url
     # print(request.user)
     return render(request, 'blog/index.html',paraDic)
 
@@ -49,7 +49,7 @@ def regpost(request):
         return HttpResponseRedirect('/')
 
     newPost=Context(postName=request.POST['title'],contents=request.POST['contents'],
-                    toDo=request.POST['contents'], userID=request.user)
+                    toDo=request.POST['contents'], userID=request.user, postDescription=request.POST['description'])
     newPost.save()
 
     return HttpResponseRedirect('/')
@@ -58,10 +58,15 @@ def register(request):
     return render(request,'test/register.html',)
 
 def reguser(request):
-    newUser=User.objects.create_user(request.POST['id'],request.POST['email'],request.POST['pwd'])
-    newUser.save()
-
-    return HttpResponseRedirect(reverse('index'))
+    try:
+        newUser=User.objects.create_user(request.POST['id'],request.POST['email'],request.POST['pwd'])
+        newUser.first_name=request.POST['name'][0]
+        newUser.lase_name=request.POST['name'][0:]
+        newUser.save()
+    except 'UNIQUE constraint failed':
+        return HttpResponseRedirect(reverse('write'))
+    else:
+        return HttpResponseRedirect(reverse('index'))
 
 def viewPost(request,post_id):
     obj=Context.objects.get(postID=post_id)
@@ -72,11 +77,19 @@ def viewPost(request,post_id):
 
 def search(request):
     keyword = request.GET.get('searchKeyword',)
-    paraDic={'keyword':keyword}
+    result=Context.objects.filter(postName__regex=r'.*'+keyword+'.*')
+    print(result)
+    if result.exists():
+        paraDic={'keyword':keyword, 'resList':result}
+        print('exist')
+    else:
+        paraDic={'keyword':keyword, 'resList':None}
+
     return render(request,'test/searchRes.html',paraDic)
 
 def mypage(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     else:
-        return render(request, 'test/mypage.html')
+        paraDic={'user':request.user, 'userData':User.objects.get(username=request.user)}
+        return render(request, 'test/mypage.html',paraDic)

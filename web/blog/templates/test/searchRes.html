@@ -1,7 +1,27 @@
-{% extends "test/base.html" %}
+{% extends "test/index_parent.html" %}
+{% load staticfiles %}
 
 {% block title %} {{ keyword }}에 대한 검색 결과 {% endblock %}
 
-{% block content %}
-<p>구현 예정</p>
+{% block boardheader %}
+    {% if resList %}
+    <h3>{{ keyword }}에 대한 검색결과</h3>
+    {% else %}
+    <h3>{{ keyword }}에 대한 검색결과가 없습니다</h3>
+    {% endif %}
+{% endblock %}
+
+{% block card %}
+            {% for post in resList %}
+                  <div class="col" id="ContentsElement">
+                    <div class="card" style="width: 20rem;">
+                      <img class="card-img-top" src="{% static "/images/" %}{{ post.postImage }}" alt="Card image cap">
+                      <div class="card-block">
+                        <h4 class="card-title">{{ post.postName }}</h4>
+                        <p class="card-text">{{ post.postDescription }}</p>
+                        <a href="/post/{{ post.postID }}" class="btn btn-secondary">Go Pjt-Room</a>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
 {% endblock %}

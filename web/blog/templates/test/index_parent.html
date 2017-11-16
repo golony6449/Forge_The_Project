@@ -1,0 +1,108 @@
+{% extends 'test/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Forge The Project{% endblock %}
+
+<!-- -상단 내비바 끝- -->
+<!-- -대문 시작-->
+{% block content %}
+  <div class="jumbotron">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--대문 글-->
+    <h1 class="text-center" style="font : 40px Segoe Script; color : white">Forge ' the Project '</h1><br>
+
+    <!--검색창-->
+    <form class="" action="{% url "search" %}" method="get">
+      <div class="input-group" id="searchbox">
+        <input type="text" name="searchKeyword" class="form-control" placeholder="Search for Pjt" value="{{ keyword }}">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-secondary" onclick="DisplayCard()" style="padding-left: 6px;padding-right: 6px;"><span><img src="{% static 'Demo/icon/filter.png' %}" alt=""></span></button>
+          <!--
+          <ul class="dropdown-menu">
+            <li data-toggle="form-group"><a class="dropdown-item" href="#">Platform</a></li>
+              <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <div role="separator" class="dropdown-divider"></div>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+        -->
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-secondary border border-light border-top-0 border-bottom-0 border-right-0"><img src="{% static 'Demo/icon/search.png' %}" alt=""></button>
+          </div>
+        </div>
+    </form>
+    </div>
+    <!--필터 카드-->
+    <div class="card card-body" id="Filtercard" style="width: 20rem;height: 280px;padding:0;">
+      <div class="card-header" style="height:50px;">
+        <button type="button" class="close" aria-label="Close" onclick="DisplayCard()" data-dismiss="card"><span aria-hidden="true">&times;</span></button>
+        <h4 class="card-title">Filter</h4>
+      </div>
+      <div style="padding:6px;">
+        <div class="filter-select">
+          <h6 class="card-subtitle mb-2 text-muted">Platform</h6>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option selected>All</option>
+            <option>Web</option>
+            <option>Software</option>
+            <option>Embeded</option>
+            <option>ETC..</option>
+          </select>
+        </div>
+        <div class="filter-select">
+          <h6 class="card-subtitle mb-2 text-muted">Language</h6>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option selected>All</option>
+            <option>Python</option>
+            <option>Java</option>
+            <option>C</option>
+            <option>Cpp</option>
+            <option>C#</option>
+            <option>Ruby</option>
+            <option>ETC..</option>
+          </select>
+        </div>
+        <div class="filter-select">
+          <h6 class="card-subtitle mb-2 text-muted">Project Sizes</h6>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option selected>All</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>ETC..</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="Board">
+    <div id="WebBoard">
+      <div class="BoardHeader">
+        {% block boardheader %} {% endblock %}
+      </div>
+      <div class="BoardContents">
+        <div class="row" id="ContentsRow">
+<!--{% static "Demo/Icon/resized-DefaultImage.png" %}"-->
+          {% block card %}
+
+          {% endblock %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

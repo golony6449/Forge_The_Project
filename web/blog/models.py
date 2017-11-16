@@ -23,4 +23,4 @@ class Context(models.Model):
     postDescription=models.CharField(max_length=15)
 
     def __str__(self):
-        return str(self.postID) + str(self.postName) + "    " + str(self.postDate)
+        return str(self.postID) + '  ' + str(self.postName) + "  " + str(self.postDate)
