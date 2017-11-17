@@ -16,6 +16,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
   <!--<script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js' %}"></script>-->
 
+  <!--<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">--> <!-- 검색창 날아감 -->
+  <link rel="stylesheet" href="{% static 'css/customforindex.css' %}">
+
   <meta name="viewport" content="width=device-width" , initial-scale="1">
 </head>
 
@@ -38,27 +41,22 @@
       <a class="nav-link dropdown-toggle mr-auto" href="#" id="navbarLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Login
       </a>
-      <div  id="login_dropdown" class="dropdown-menu">
+      <div id="login_dropdown" class="dropdown-menu">
         <form class="px-4 py-3" method="post" action="/login/">
             {% csrf_token %}
           <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Email address</label>
-            <input type="text" class="form-control" name="id" placeholder="email@example.com">
+            <label for="exampleDropdownFormEmail1">ID</label>
+            <input type="text" class="form-control" name="id" placeholder="ID">
           </div>
           <div class="form-group">
             <label for="exampleDropdownFormPassword1">Password</label>
             <input type="password" class="form-control" name="pwd" placeholder="Password">
           </div>
-          <div class="form-check">
-            <label class="form-check-label">
-        <input type="checkbox" class="form-check-input">
-        Remember me
-      </label>
-          </div>
+
           <input type="submit" class="btn btn-primary" value="Sign In"></input>
         </form>
         <div class="dropdown-divider"></div>
-        <span class="dropdown-item">Do not have ID? <a href="/register">Sign up</a></span>
+        <a class="dropdown-item" href="/register">Sign up</a>
         <a class="dropdown-item" href="#">Forgot password?</a>
       </div>
 {% endif %}
@@ -97,11 +95,14 @@
 
 {% block content %} {% endblock %}
 
-  <div class="jumbotron">
-      <h1 class="text-left" style="font : 20px Segoe Script; color : white">17조 웹프로그래밍 팀프로젝트</h1><br>
-      <h1 class="text-left" style="font : 15px Segoe Script; color : white">프론트앤드 - 김윤기, 문윤기</h1><br>
-      <h1 class="text-left" style="font : 15px Segoe Script; color : white">백엔드 - 박성흠</h1><br>
-      <h1 class="text-left" style="font : 15px Segoe Script; color : white">Powered by Bootstrap, Django</h1><br>
-  </div>
+  <!--  -footer-  -->
+  <footer class="footer">
+    <div class="container" id = "FooterContainer">
+      <br>
+      <p class="text-muted">Maked by Park, Kim, Moon</p>
+      <p class="text-muted">ⓒCopyright 2017 FtP, Designed by Bootstrap</p>
+      <br>
+    </div>
+  </footer>
 </body>
 </html>

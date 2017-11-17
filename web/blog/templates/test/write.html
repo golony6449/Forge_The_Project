@@ -3,6 +3,11 @@
 {% block title %} 프로젝트 생성 {% endblock %}
 
 {% block content %}
+<br>
+  <br>
+  <br>
+  <br>
+
     <form action="{% url 'regpost' %}" method="post" id="posting">
         {% csrf_token %}
         제목 <input type="text" name="title" required> <br/>

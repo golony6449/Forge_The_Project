@@ -1,27 +1,57 @@
-function LoadingContents() {
-  $(window).scroll(function() {
-    var nCard =1;
-    var i;
-    var code = '<div class="col"><div class="card" style="width: 20rem;"><img class="card-img-top" src="Demo/Icon/resized-DefaultImage.png" alt="Card image cap"><div class="card-block"><h4 class="card-title">Project title</h4><p class="card-text">Describe Your Project</p><a href="#" class="btn btn-secondary">Go Pjt-Room</a></div></div></div>';
-    if ($(window).scrollTop() == $(document).height() - $(window).height())
-   {
-      if($(window).width()>=1570){
-        nCard=4;
+/*
+$("document").ready(function(){
+  var nCard=1;
+  var nContent=0;
+  var i;
+
+  $(window).resize(function() {
+    var nCElement = $("#ContentsElement").length;
+
+    if($(window).width()>=1570){
+      nCard = 4;
     }else if($(window).width()>=1220){
-        nCard=3;
+      nCard = 3;
     }else if($(window).width()>=870){
-       nCard=2;
+      nCard = 2;
     }else{
-        nCard=1;
-     }
-      for(i=0;i<nCard;i++){
-      $("#ContentsRow").append(code);
+      nCard = 1;
+    }
+
+    if((nCard - (nCElement%nCard))!= nContent){
+      nContent = nCard-(nCElement%nCard);
+      for(i=0;i<nContent;i++){
+        $("#ContentsRow").append('<div class="col">'+$("#ContentsElement").html()+"</div>");
       }
-   }
+    }
+  })
+
+  $(window).scroll(function() {
+
+    if($(window).width()>=1570){
+      nCard = 4;
+    }else if($(window).width()>=1220){
+      nCard = 3;
+    }else if($(window).width()>=870){
+      nCard = 2;
+    }else{
+      nCard = 1;
+    }
+
+    if ($(window).scrollTop() == $(document).height() - $(window).height())
+    {
+      //console.log(++page);
+      //페이지 끝에 내용 추가
+      //width>=1570 : 4cards, 1569>=width>=1220 : 3cards, 1219>=width>=870 : 2cards, width<=869 : 1card
+
+      for(i=0;i<nCard;i++){
+        $("#ContentsRow").append('<div class="col">'+$("#ContentsElement").html()+"</div>");
+      }
+    }
   });
-}
 
-
+});
+*/
+/*필터*/
 function DisplayCard() {
   var x = document.getElementById("Filtercard");
   if(x.style.display==="none"){
@@ -30,3 +60,14 @@ function DisplayCard() {
     x.style.display="none"
   }
 }
+/*더보기 버튼*/
+$(function(){
+  $(".col").slice( 0, 8 ).show();
+  $("#Viewmore").click(function(event){
+    event.preventDefault();
+    $(".col:hidden").slice( 0, 8 ).show();
+    if($(".col:hidden").length == 0){
+      $("#Viewmore").css("display","none");
+    }
+  })
+});

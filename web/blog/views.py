@@ -93,3 +93,7 @@ def mypage(request):
     else:
         paraDic={'user':request.user, 'userData':User.objects.get(username=request.user)}
         return render(request, 'test/mypage.html',paraDic)
+
+def detail(request):
+
+    return render(request, 'blog/project.html')

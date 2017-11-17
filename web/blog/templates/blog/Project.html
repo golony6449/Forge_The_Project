@@ -5,21 +5,102 @@
   <meta charset='UTF-8'>
   <title>Forge The Project</title>
 
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/bootstrap-grid.css">
-  <link rel="stylesheet" href="css/custom.css">
+  {% load staticfiles %}
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/customforpjt.css' %}">
+  <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+  <!--<script src="{% static 'js/chartj.js' %}"></script>-->
+  <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+  <script src="{% static 'js/utils.js' %}"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <script type="text/javascript">
+    var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [
+            randomScalingFactor(), //data1 value
+            randomScalingFactor(),  //data2 value
+          ],
+          backgroundColor: [
+            window.chartColors.orange,
+            window.chartColors.yellow,
+          ],
+          label: 'Dataset 1',
+          borderWidth : 0
+        }],
+        labels: [
+          "Orange",
+          "Yellow",
+        ]
+      },
+      options: {
+        cutoutPercentage: 88,
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart'
+           // 그래프 이름 삽입
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true
+        }
+      }
+
+    };
+
+    window.onload = function() {
+      var i = 0;
+      for (i = 0; i < 2; i++) {
+        var ctx = document.getElementById("chart-area" + i).getContext("2d");
+        window.myDoughnut = new Chart(ctx, config);
+      }
+    };
+  </script>
 </head>
 
 <body>
   <div class="div_container">
     <div class="leftmenu">
-      <div class="site_title"><img src="Demo/Icon/Forge-resize50.png" alt="Forge.png">&nbsp;&nbsp;<span>Forge The Project</span></div>
+      <div class="site_title"><img src="{% static 'Demo/Icon/Forge-resize50.png' %}" alt="Forge.png">&nbsp;&nbsp;<span>Forge The Project</span></div>
     </div>
     <div class="rightcontent">
-      nice to meet you
+      <div class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </div>
+      <div class="chartdiv container">
+        <div class="row">
+          <div class="canvas-holder">
+            <canvas id="chart-area0" style="width:300px;height:300px" />
+          </div>
+          <div class="canvas-holder">
+            <canvas id="chart-area1" style="width:300px;height:300px" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
