@@ -8,11 +8,11 @@
   <br>
   <br>
 
-    <form action="{% url 'regpost' %}" method="post" id="posting">
+    <form action="{% url 'regpost' %}" method="post" id="posting" enctype="multipart/form-data">
         {% csrf_token %}
         제목 <input type="text" name="title" required> <br/>
         프로젝트 요약 <input type="test" name="description" required> <br/>
-        <!--대표 이미지 <input type="image" name="image" required> <br/>-->
+        대표 이미지 <input type="file" name="image"> <br/>
         소개 <br/>
             <textarea name="contents" form="posting" rows=10 cols=100 required></textarea> <br/>
 

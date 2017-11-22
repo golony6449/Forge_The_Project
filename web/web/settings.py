@@ -125,6 +125,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # https://wayhome25.github.io/django/2017/05/10/media-file/
 MEDIA_URL = '/static/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/images')
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 

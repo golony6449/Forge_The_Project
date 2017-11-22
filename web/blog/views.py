@@ -49,7 +49,8 @@ def regpost(request):
         return HttpResponseRedirect('/')
 
     newPost=Context(postName=request.POST['title'],contents=request.POST['contents'],
-                    userID=request.user, postDescription=request.POST['description'])
+                    userID=request.user, postDescription=request.POST['description'], postImage=request.FILES['image'])
+    print(request.FILES)
     newPost.save()
 
     return HttpResponseRedirect('/')
@@ -73,7 +74,7 @@ def viewPost(request,post_id):
     text=obj.contents
 
     return render(request, 'test/post.html',{'title':obj.postName ,'contents':text, 'id':obj.postID,
-                                             'author':obj.userID,'when':obj.postDate})
+                                             'author':obj.userID,'when':obj.postDate, 'path':obj.postImage})
 
 def search(request):
     keyword = request.GET.get('searchKeyword',)
@@ -85,7 +86,7 @@ def search(request):
     else:
         paraDic={'keyword':keyword, 'resList':None}
 
-    return render(request,'test/searchRes.html',paraDic)
+    return render(request,'/searchRes.html',paraDic)
 
 def mypage(request):
     if not request.user.is_authenticated:
