@@ -49,7 +49,7 @@ def regpost(request):
         return HttpResponseRedirect('/')
 
     newPost=Context(postName=request.POST['title'],contents=request.POST['contents'],
-                    toDo=request.POST['contents'], userID=request.user, postDescription=request.POST['description'])
+                    userID=request.user, postDescription=request.POST['description'])
     newPost.save()
 
     return HttpResponseRedirect('/')

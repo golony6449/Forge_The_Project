@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^detail/$', views.detail, name='detail'),
 
 
+
     # url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),  # 로그아웃 후 홈으로 이동
     # url(r'^login/$', auth_views.login, {'template_name':'blog/login.html'}, name='login'),
 ]

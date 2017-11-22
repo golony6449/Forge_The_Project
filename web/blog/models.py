@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.timezone import now
 
 # Create your models here.
@@ -18,9 +19,15 @@ class Context(models.Model):
     contents=models.TextField()
     postDate=models.DateTimeField(auto_now_add=True)
     userID=models.CharField(max_length=10)
-    toDo=models.TextField()
     postImage=models.ImageField(blank=True)
     postDescription=models.CharField(max_length=15)
 
+    todo1=models.CharField(max_length=20, null=True)
+    todo2=models.CharField(max_length=20, null=True)
+    todo3=models.CharField(max_length=20, null=True)
+    todo4=models.CharField(max_length=20, null=True)
+    todo5=models.CharField(max_length=20, null=True)
+
     def __str__(self):
         return str(self.postID) + '  ' + str(self.postName) + "  " + str(self.postDate)
+
