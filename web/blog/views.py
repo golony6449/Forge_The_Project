@@ -71,7 +71,7 @@ def reguser(request):
 
 def viewPost(request,post_id):
     obj=Context.objects.get(postID=post_id)
-    text=obj.contents
+    text=obj.contentss
 
     return render(request, 'test/post.html',{'title':obj.postName ,'contents':text, 'id':obj.postID,
                                              'author':obj.userID,'when':obj.postDate, 'path':obj.postImage})
@@ -86,15 +86,23 @@ def search(request):
     else:
         paraDic={'keyword':keyword, 'resList':None}
 
-    return render(request,'/searchRes.html',paraDic)
+    return render(request,'blog/searchRes.html',paraDic)
 
 def mypage(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect('/')
-    else:
+    # if not request.user.is_authenticated:
+    #     return HttpResponseRedirect('/')
+    # else:
         paraDic={'user':request.user, 'userData':User.objects.get(username=request.user)}
         return render(request, 'test/mypage.html',paraDic)
 
-def detail(request):
+def detail(request,post_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
 
-    return render(request, 'blog/project.html')
+    obj=Context.objects.get(postID=post_id)
+
+    total=5
+
+
+    paraDic={'post':obj, 'value1':3,'value2':6}
+    return render(request, 'blog/project.html',paraDic)
