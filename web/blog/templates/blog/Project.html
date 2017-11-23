@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang='ko'>
 
+{% load staticfiles %}
+
 <head>
   <meta charset='UTF-8'>
   <title>Forge The Project</title>
-
-  {% load staticfiles %}
-
+  <!-- Styleshhet CSS3-->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/customforpjt.css' %}">
+  <!--java script-->
   <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
-  <!--<script src="{% static 'js/chartj.js' %}"></script>-->
+  <script src="{% static 'js/chartj.js' %}"></script>
   <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
   <script src="{% static 'js/utils.js' %}"></script>
 
@@ -27,15 +28,15 @@
       data: {
         datasets: [{
           data: [
-            randomScalingFactor(), //data1 value
-            randomScalingFactor(),  //data2 value
+            randomScalingFactor(),
+            randomScalingFactor(),
           ],
           backgroundColor: [
             window.chartColors.orange,
             window.chartColors.yellow,
           ],
           label: 'Dataset 1',
-          borderWidth : 0
+          borderWidth: 0
         }],
         labels: [
           "Orange",
@@ -43,15 +44,14 @@
         ]
       },
       options: {
-        cutoutPercentage: 88,
+        cutoutPercentage: 78,
         responsive: true,
         legend: {
-          position: 'top',
+          position: 'bottom',
         },
         title: {
           display: true,
-          text: 'Chart.js Doughnut Chart'
-           // 그래프 이름 삽입
+          text: 'TODO'
         },
         animation: {
           animateScale: true,
@@ -73,10 +73,21 @@
 
 <body>
   <div class="div_container">
-    <div class="leftmenu">
-      <div class="site_title"><a href="{% url 'index' %}"><img src="{% static 'Demo/Icon/Forge-resize50.png' %}" alt="Forge.png">&nbsp;&nbsp;<span>Forge The Project</span></a></div>
+    <div class="left-menu">
+        <a href="/" style="text-decoration-color:white">
+            <div class="site_title"><img src="{% static 'Demo/Icon/Forge-resize50.png' %}" alt="Forge.png">&nbsp;&nbsp;<span>Forge The Project</span></div>
+        </a>
+        <div class="left-menu-contents" style="text-align:center">
+            <p></p>
+            <img class="card-img-top" style="width:90%;" src="{% static 'images/' %}{{post.postImage}}">
+            <p></p>
+            <p>{{ post.postName }}</p>
+            <p>팀장 {{ post.userID }}</p>
+            <p>{{ post.postDescription }}</p>
+            <p></p>
+        </div>
     </div>
-    <div class="rightcontent">
+    <div class="right-main">
       <div class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link active" href="#">Active</a>
@@ -91,21 +102,150 @@
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </div>
-      <div class="chartdiv container">
+
+      <!--content-->
+      <div class="right-content container">
         <div class="row">
-          <div class="canvas-holder">
-            <canvas id="chart-area0" style="width:300px;height:300px" />
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <!--Start to Chart-->
+            <div class="chartdiv container">
+              <div class="row">
+                <div class="col-6 canvas-holder">
+                  <canvas id="chart-area0" style="width:10%;height:10%;margin:15px" />
+                </div>
+                <div class="col-6 canvas-holder">
+                  <canvas id="chart-area1" style="width:10%;height:10%;margin:15px" />
+                </div>
+              </div>
+            </div>
+            <!--End to Chart-->
           </div>
-          <div class="canvas-holder">
-            <canvas id="chart-area1" style="width:300px;height:300px" />
+
+
+          <div class="col-md-6 col-sm-6 col-xs-12">
+
+            <!--Start to Notice-->
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="notice col">
+                  <h4>Notice</h4>
+                  <div class="card notice-element">
+                    <div class="card-body">
+                      Display Notice.
+                        <!--{{ post.notice }}-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--End to Notice-->
+
+            <!--Start to Member-->
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="Members col">
+                  <h4>Members</h4>
+                  <div class="Member-board container">
+                    <div class="card member-element">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
+                          </div>
+                          <div class="col-md-10 col-sm-10 col-xs-12">
+                            <pre>Name : Park Seong-heum       Field : Server</pre>
+                            <pre>Principal Software Engineer  Language : Everything</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card member-element">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
+                          </div>
+                          <div class="col-md-10 col-sm-10 col-xs-12">
+                            <pre>Name : Kim Yun-gi            Field : WEB</pre>
+                            <pre>Senior Software Engineer     Language : Everything</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card member-element">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
+                          </div>
+                          <div class="col-md-10 col-sm-10 col-xs-12">
+                            <pre>Name : Moon Yun-gi           Field : Design</pre>
+                            <pre>Junior Software Engineer     Language : Everything</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--End to Member-->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="bottom_board">
+            <div class="col">
+              <div class="card">
+                <div class="todo card-header">
+                  <h4>To Do List</h4>
+                </div>
+                <div class="todo card-body">
+
+                <form>
+                  <ul class="todo_item">
+                    <li>
+                      <p>
+                        <input type="checkbox" class="flat"> 주석 적기</p>
+                    </li>
+                    <li>
+                      <p>
+                        <input type="checkbox" class="flat"> 오류 수정하기</p>
+                    </li>
+                    <li>
+                      <p>
+                        <input type="checkbox" class="flat"> 오늘 작업내용 일지 적기</p>
+                    </li>
+                    <li>
+                      <p>
+                        <input type="checkbox" class="flat"> 미팅</p>
+                    </li>
+                    <li>
+                      <p>
+                        <input type="checkbox" class="flat"> 내일 할 일 적기</p>
+                    </li>
+                      <li>
+                          <p>
+                              <input type="submit" class="flat" value="저장">
+                          </p>
+                      </li>
+                  </ul>
+                </form>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   </div>
-
+  </div>
 </body>
 
 </html>

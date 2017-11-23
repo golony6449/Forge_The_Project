@@ -11,8 +11,8 @@ var config = {
         randomScalingFactor(),
       ],
       backgroundColor: [
-        window.chartColors.Orange,
-        window.chartColors.Yellow,
+        window.chartColors.orange,
+        window.chartColors.yellow,
       ],
       label: 'Dataset 1',
       borderWidth : 0

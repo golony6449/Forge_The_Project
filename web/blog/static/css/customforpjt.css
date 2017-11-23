@@ -13,14 +13,14 @@ html, body{
 	padding: 0;
 	height : 100%;
 }
-.leftmenu{
+.left-menu{
 	background-color: #6C7A89;
 	display:flex;
 	flex-direction: column;
-	/*width: 14%;*/
+	width: 14%;
 	min-width: 268px;
 	height : 100%;
-	order: 1;
+	/*order: 1;*/
 }
 
 .site_title{
@@ -28,11 +28,22 @@ html, body{
 	margin-left: 20px;
 }
 
-.rightcontent{
+.left-menu-contents{
+	margin-top: 10px;
+	margin-left: 20px;
+	/*text-align: center;*/
+	font: 21px Helvetica;
+	color: white;
+	order:1;
+}
+
+.right-main{
 	background-color: #ececec;
-	width : 90%;
+	width : 86%;
 	height : 100%;
-	order: 2;
+	order:2;
+	padding: 0;
+	margin: 0;
 }
 .site_title{
 	font: 21px Helvetica;
@@ -40,7 +51,7 @@ html, body{
 	order:1;
 }
 
-.rightcontent>.nav{
+.right-main>.nav{
 	background-color:white;
 	height : 4rem;
 }
@@ -48,17 +59,95 @@ html, body{
 	margin-top: 10px;
 	color: rgb(163, 163, 163);
 }
-
+.right-content{
+	max-width: 1549px;
+	height : 90%;
+	width: 100%;
+	padding: 15px;
+	margin: 0px;
+	margin-top: 25px;
+}
 .chartdiv{
-	position: absolute;
-	left: 280px;
-	top: 80px;
-	width : 900px;
-	height: 400px;
+	padding-left:10px;
+	max-height: 400px;
+	height: 100%;
+}
+.chartdiv>.row{
+	height:100%;
+}
+
+.notice{
+	width: 700px;
+	margin-bottom: 10px;
+}
+
+canvas{
+	width:auto;
+	height: auto;
+}
+.notice-element{
+	width : 100%;
+	box-shadow: inset 0 0 10px rgb(89, 89, 89);
+}
+.notice-element>.card-body{
+	padding-top : 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.Members{
+	width:700px;
+}
+
+.Member-board{
+	width : 100%;
+	background-color: rgb(252, 252, 252);
+	border: 1px solid rgb(182, 182, 182);
+	border-radius: 10px;
+	box-shadow: inset 0 0 8px rgb(89, 89, 89);
+}
+
+.member-element{
+	width : 95%;
+	max-height: 80px;
+	margin : 10px 15px 10px;
+	box-shadow: 0 0 10px rgb(89, 89, 89);
+}
+
+.member-element>.card-body{
+	height:100%;
+	padding-top : 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 canvas {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+}
+
+div.bottom_board{
+	padding: 20px 20px 0px;
+}
+div.todo.card-header{
+	background-color: #ececec;
+}
+div.todo.card-body{
+	background-color: #f4f4f4;
+}
+ul.todo_item{
+	padding-left: 10px;
+}
+ul.todo_item li{
+	list-style: none;
+}
+@media (max-width: 985px){
+	.div_container>.left-menu{
+		min-width: 83px;
+	}
+	.site_title>span{
+		display: none;
+	}
 }

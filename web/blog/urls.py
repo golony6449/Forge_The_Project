@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^post/(?P<post_id>[0-9]+)/$', views.viewPost, name='viewPost'),
     url(r'^search/$', views.search, name='search'),
     url(r'^mypage/$', views.mypage, name='mypage'),
-    url(r'^detail/$', views.detail, name='detail'),
+    url(r'^detail/(?P<post_id>[0-9]+)/$', views.detail, name='detail'),
 
 
 
