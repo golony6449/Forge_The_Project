@@ -74,10 +74,20 @@
 <body>
   <div class="div_container">
     <div class="left-menu">
-        <a href="/" style="text-decoration-color:white">
-            <div class="site_title"><img src="{% static 'Demo/Icon/Forge-resize50.png' %}" alt="Forge.png">&nbsp;&nbsp;<span>Forge The Project</span></div>
-        </a>
-        <div class="left-menu-contents" style="text-align:center">
+        <!--<a href="/" style="font-size : 15px; color : white;">-->
+            <!--<div class="site_title">-->
+              <!--<img src="{% static 'Demo/Icon/Forge-resize50.png' %}" alt="Forge.png">&nbsp;&nbsp;-->
+              <!--<span style="font-size:15px; text-align:left;">Forge The Project</span>-->
+            <!--</div>-->
+        <!--</a>-->
+
+        <div class="site_title">
+        <a href="/" style="font-size : 15px; color : white; text-decoration:none;"><img src="{% static "Demo/Icon/Forge-resize50.png" %}" alt="Forge.png">
+        <span>&nbsp;&nbsp;<span>Forge The Project</span>
+      </a>
+      </div>
+
+        <div class="left-menu-contents" style="text-align:center; order: 2;">
             <p></p>
             <img class="card-img-top" style="width:90%;" src="{% static 'images/' %}{{post.postImage}}">
             <p></p>
@@ -197,47 +207,84 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="bottom_board">
-            <div class="col">
-              <div class="card">
-                <div class="todo card-header">
-                  <h4>To Do List</h4>
-                </div>
-                <div class="todo card-body">
-
-                <form>
-                  <ul class="todo_item">
-                    <li>
-                      <p>
-                        <input type="checkbox" class="flat"> 주석 적기</p>
-                    </li>
-                    <li>
-                      <p>
-                        <input type="checkbox" class="flat"> 오류 수정하기</p>
-                    </li>
-                    <li>
-                      <p>
-                        <input type="checkbox" class="flat"> 오늘 작업내용 일지 적기</p>
-                    </li>
-                    <li>
-                      <p>
-                        <input type="checkbox" class="flat"> 미팅</p>
-                    </li>
-                    <li>
-                      <p>
-                        <input type="checkbox" class="flat"> 내일 할 일 적기</p>
-                    </li>
-                      <li>
-                          <p>
-                              <input type="submit" class="flat" value="저장">
-                          </p>
-                      </li>
-                  </ul>
-                </form>
-
-                </div>
-              </div>
+       <div class="row">
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="Pannel todoBoard">
+              <h4>To Do List</h4>
+                <ul class="todo_item">
+                  <li>
+                    <p>
+                      <input type="checkbox" class="flat"> 주석 적기</p>
+                  </li>
+                  <li>
+                    <p>
+                      <input type="checkbox" class="flat"> 오류 수정하기</p>
+                  </li>
+                  <li>
+                    <p>
+                      <input type="checkbox" class="flat"> 오늘 작업내용 일지 적기</p>
+                  </li>
+                  <li>
+                    <p>
+                      <input type="checkbox" class="flat"> 미팅</p>
+                  </li>
+                  <li>
+                    <p>
+                      <input type="checkbox" class="flat"> 내일 할 일 적기</p>
+                  </li>
+                </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="Pannel">
+              <h4>Recent Activities</h4>
+              <ul class="timeline">
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <a>Bug fixed</a>
+                      </h2>
+                      <div class="byline">
+                        <span>13 hours ago</span> by <a>Mr.Park</a>
+                      </div>
+                      <p class="excerpt">Django bug fix
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <a>Complete Index Page</a>
+                      </h2>
+                      <div class="byline">
+                        <span>13 hours ago</span> by <a>Mr.Moon</a>
+                      </div>
+                      <p class="excerpt">Title is Detail</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <a>Make Registration Modal</a>
+                      </h2>
+                      <div class="byline">
+                        <span>13 hours ago</span> by <a>Mr.Kim</a>
+                      </div>
+                      <p class="excerpt">Title is Detail</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-5 col-xs-12">
+            <div class="Pannel">
+              <h4>Calendar</h4>
             </div>
           </div>
         </div>

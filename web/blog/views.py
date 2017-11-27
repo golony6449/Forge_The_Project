@@ -59,19 +59,22 @@ def register(request):
     return render(request,'test/register.html',)
 
 def reguser(request):
-    try:
-        newUser=User.objects.create_user(request.POST['id'],request.POST['email'],request.POST['pwd'])
-        newUser.first_name=request.POST['name'][0]
-        newUser.lase_name=request.POST['name'][0:]
-        newUser.save()
-    except 'UNIQUE constraint failed':
-        return HttpResponseRedirect(reverse('write'))
-    else:
-        return HttpResponseRedirect(reverse('index'))
+    # try:
+    print(request.POST['regid'])
+    newUser=User.objects.create_user(request.POST['regid'],request.POST['email'],request.POST['regpwd'])
+    newUser.first_name=request.POST['firstName']
+    newUser.last_name=request.POST['lastName']
+    newUser.profile.field=request.POST['field']
+    newUser.profile.laguage=request.POST['language']
+    newUser.save()
+    # except 'UNIQUE constraint failed':
+    #     return HttpResponseRedirect(reverse('write'))
+    # else:
+    return HttpResponseRedirect(reverse('index'))
 
 def viewPost(request,post_id):
     obj=Context.objects.get(postID=post_id)
-    text=obj.contentss
+    text=obj.content
 
     return render(request, 'test/post.html',{'title':obj.postName ,'contents':text, 'id':obj.postID,
                                              'author':obj.userID,'when':obj.postDate, 'path':obj.postImage})
@@ -94,6 +97,10 @@ def mypage(request):
     # else:
         paraDic={'user':request.user, 'userData':User.objects.get(username=request.user)}
         return render(request, 'test/mypage.html',paraDic)
+
+def welcome(request):
+    paraDic={'name':11}
+    return render(request,'test/welcome.html', paraDic)
 
 def detail(request,post_id):
     if not request.user.is_authenticated:

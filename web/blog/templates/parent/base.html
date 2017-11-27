@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="{% static 'css/customforindex.css' %}">
 
   <meta name="viewport" content="width=device-width" , initial-scale="1">
+
+  {% block javasrcipt %}{% endblock %}
+
 </head>
 
 <body>
@@ -56,9 +59,89 @@
           <input type="submit" class="btn btn-primary" value="Sign In"></input>
         </form>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/register">Sign up</a>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" style="margin:4px 24px 4px;">
+            Do not have ID?
+        </button>
         <a class="dropdown-item" href="#">Forgot password?</a>
       </div>
+      <!--Start to Sign-up modal-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content container">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Registration</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- 회원가입 -->
+            <div class="modal-body">
+              <form id="register" method="post" action="{% url 'reguser' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label>User Name</label>
+                  <div class="form-row">
+                    <div class="col-4">
+                      <small id="nameHelpInline" class="text-muted">
+                      First name</small>
+                      <input type="text" class="form-control" id="regName" placeholder="Enter" maxlength="20" name="firstName">
+                    </div>
+                    <div class="col">
+                      <small id="nameHelpInline" class="text-muted">
+                      Last name</small>
+                      <input type="text" class="form-control" id="regName" placeholder="your name" maxlength="10" name="lastName">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>ID</label>
+                  <input type="text" class="form-control" id="regid" placeholder="Enter your ID" maxlength="20" autocomplete="off" name="regid">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" id="regPass" placeholder="Enter your Password" aria-describedby="passwordHelpInline" name="regpwd">
+                  <small id="passwordHelpInline" class="text-muted">
+                  Must be 8-20 characters long, contain letters and numbers.</small>
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control" id="regConPass" placeholder="Confirm your Password" name="regpwdCheck">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" id="regEmail" placeholder="Enter your Email" name="email">
+                </div>
+                <div class="form-group">
+                  <label>Your Field</label>
+                  <select class="form-control" id="UserFieldSelect" name="field">
+                    <option>Web</option>
+                    <option>Software</option>
+                    <option>Embeded</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Language</label>
+                  <select class="form-control" id="UserLangSelect" name="language">
+                    <option>Python</option>
+                    <option>Java</option>
+                    <option selected>C</option>
+                    <option>Cpp</option>
+                    <option>C#</option>
+                    <option>Ruby</option>
+                  </select>
+                </div>
+                  <button type="submit" class="btn btn-secondary" form="register">Registration</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End to Sign-up modal-->
 {% endif %}
 <!-- 로그인 파트 끝 -->
 

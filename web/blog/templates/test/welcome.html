@@ -1,0 +1,27 @@
+{% extends 'parent/base.html' %}
+{% load staticfiles %}
+
+{% block title %}환영합니다{% endblock %}
+
+{% block javascript %}
+<style>
+    .content-body{
+        display:flex;
+        font: 21px Helvetica;
+	    color: black;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="card card-body" id="Filtercard" style="width: 20rem;height: 280px;padding:0;">
+    <p class="content-body">XX님, 환영합니다</p>
+    <p class="content-body">크고 작은 프로젝트들을 경험해보세요.</p>
+</div>
+{% endblock %}

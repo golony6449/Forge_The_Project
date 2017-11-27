@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^mypage/$', views.mypage, name='mypage'),
     url(r'^detail/(?P<post_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^welcome/$', views.welcome, name='welcome'),
 
 
 
