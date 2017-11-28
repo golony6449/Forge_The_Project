@@ -100,6 +100,9 @@
     <div class="right-main">
       <div class="nav justify-content-end">
         <li class="nav-item">
+          <a class="nav-link active" href="{% url 'edit' post_id=post.postID %}">수정하기</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item">
@@ -142,8 +145,7 @@
                   <h4>Notice</h4>
                   <div class="card notice-element">
                     <div class="card-body">
-                      Display Notice.
-                        <!--{{ post.notice }}-->
+                      {{ post.notice }}
                     </div>
                   </div>
                 </div>
@@ -214,23 +216,23 @@
                 <ul class="todo_item">
                   <li>
                     <p>
-                      <input type="checkbox" class="flat"> 주석 적기</p>
+                      <input type="checkbox" class="flat"> {{ post.todo1 }}</p>
                   </li>
                   <li>
                     <p>
-                      <input type="checkbox" class="flat"> 오류 수정하기</p>
+                      <input type="checkbox" class="flat"> {{ post.todo2 }}</p>
                   </li>
                   <li>
                     <p>
-                      <input type="checkbox" class="flat"> 오늘 작업내용 일지 적기</p>
+                      <input type="checkbox" class="flat"> {{ post.todo3 }}</p>
                   </li>
                   <li>
                     <p>
-                      <input type="checkbox" class="flat"> 미팅</p>
+                      <input type="checkbox" class="flat"> {{ post.todo4 }}</p>
                   </li>
                   <li>
                     <p>
-                      <input type="checkbox" class="flat"> 내일 할 일 적기</p>
+                      <input type="checkbox" class="flat"> {{ post.todo5 }}</p>
                   </li>
                 </ul>
             </div>

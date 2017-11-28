@@ -42,18 +42,37 @@ def write(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
 
-    return render(request,'test/write.html')
+    paraDic={'post':None, 'edit':False}
 
-def regpost(request):
+    return render(request,'test/write.html', paraDic)
+
+def regpost(request, post_id=-1):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
 
-    newPost=Context(postName=request.POST['title'],contents=request.POST['contents'],
-                    userID=request.user, postDescription=request.POST['description'], postImage=request.FILES['image'])
-    print(request.FILES)
-    newPost.save()
+    if post_id==-1:
+        Post = Context(postName=request.POST['title'],contents=request.POST['contents'], userID=request.user,
+                          postDescription=request.POST['description'], postImage=request.FILES['image'],
+                          todo1=request.POST['todo1'], todo2=request.POST['todo2'], todo3=request.POST['todo3'],
+                          todo4=request.POST['todo4'], todo5=request.POST['todo5'], notice=request.POST['notice'])
+        print(request.FILES)
+        Post.save()
+    else:
+        Post=Context.objects.get(postID=post_id)
+        Post.postName=request.POST['title']
+        Post.contents=request.POST['contents']
+        # Post.userID=request.user
+        Post.postDescription=request.POST['description']
+        #Post.postImage=request.FILES['image']
+        Post.todo1=request.POST['todo1']
+        Post.todo2=request.POST['todo2']
+        Post.todo3=request.POST['todo3']
+        Post.todo4=request.POST['todo4']
+        Post.todo5=request.POST['todo5']
+        Post.notice=request.POST['notice']
+        Post.save()
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/detail/'+str(Post.postID))
 
 def register(request):
     return render(request,'test/register.html',)
@@ -74,10 +93,11 @@ def reguser(request):
 
 def viewPost(request,post_id):
     obj=Context.objects.get(postID=post_id)
-    text=obj.content
 
-    return render(request, 'test/post.html',{'title':obj.postName ,'contents':text, 'id':obj.postID,
-                                             'author':obj.userID,'when':obj.postDate, 'path':obj.postImage})
+    paraDic = {'title':obj.postName ,'contents':obj.contents, 'id':obj.postID,
+               'author':obj.userID,'when':obj.postDate, 'path':obj.postImage}
+
+    return render(request, 'test/post.html', paraDic)
 
 def search(request):
     keyword = request.GET.get('searchKeyword',)
@@ -99,7 +119,7 @@ def mypage(request):
         return render(request, 'test/mypage.html',paraDic)
 
 def welcome(request):
-    paraDic={'name':11}
+    paraDic={'username':11}
     return render(request,'test/welcome.html', paraDic)
 
 def detail(request,post_id):
@@ -110,6 +130,14 @@ def detail(request,post_id):
 
     total=5
 
-
     paraDic={'post':obj, 'value1':3,'value2':6}
     return render(request, 'blog/project.html',paraDic)
+
+def edit(request, post_id):
+    obj=Context.objects.get(postID=post_id)
+
+    paraDic={'post':obj, 'edit':True}
+
+    return render(request, 'test/write.html', paraDic)
+
+# TODO: 프로젝트 페이지의 참여중인 사용자명 수정

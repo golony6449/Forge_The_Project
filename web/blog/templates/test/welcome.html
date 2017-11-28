@@ -5,11 +5,15 @@
 
 {% block javascript %}
 <style>
-    .content-body{
-        display:flex;
-        font: 21px Helvetica;
-	    color: black;
-        text-align: center;
+    /*.content{*/
+        /*display:flex;*/
+        /*font: 21px Helvetica;*/
+	    /*color: black;*/
+        /*text-align: center;*/
+    /*}*/
+
+    .welcome-contents{
+
     }
 </style>
 {% endblock %}
@@ -20,8 +24,15 @@
 <br>
 <br>
 
-<div class="card card-body" id="Filtercard" style="width: 20rem;height: 280px;padding:0;">
-    <p class="content-body">XX님, 환영합니다</p>
-    <p class="content-body">크고 작은 프로젝트들을 경험해보세요.</p>
+<div>
+    <img src="{% static 'demo/icon/info.png' %}" class="welcome-contents" style="        margin: auto;
+        width: 30%;
+        border: 3px solid green;
+        padding: 10px;">
+    <p style="text-align: center">{{ username }}님, 환영합니다</p>
+    <p style="text-align: center">크고 작은 다양한 프로젝트에 참여해보세요.</p>
 </div>
 {% endblock %}
+
+<!--TODO: 5초후 redirect-->
+<!--TODO: CSS로 디자인-->
