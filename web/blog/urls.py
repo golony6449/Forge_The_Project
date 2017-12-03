@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^mypage/$', views.mypage, name='mypage'),
     url(r'^detail/(?P<post_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^welcome/$', views.welcome, name='welcome'),
+    url(r'^error/$', views.error, name='error'),
     url(r'^edit/(?P<post_id>[0-9]+)/$', views.edit,name='edit'),
     url(r'^regpost/(?P<post_id>[0-9]+)/$', views.regpost, name='regchange'),
     url(r'^join/(?P<post_id>[0-9]+)/$', views.join, name='join'),

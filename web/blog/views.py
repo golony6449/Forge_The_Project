@@ -122,6 +122,10 @@ def welcome(request):
     paraDic={'username':11}
     return render(request,'test/welcome.html', paraDic)
 
+def error(request):
+    paraDic={}
+    return render(request, 'test/error.html', paraDic)
+
 def detail(request,post_id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
@@ -154,3 +158,4 @@ def join(request, post_id):
     #TODO: 슬롯이 다 찬 경우 예외처리 (에러페이지로 리다이렉트)
 
     return HttpResponseRedirect('/detail/' + str(post_id))
+
