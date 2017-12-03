@@ -23,6 +23,9 @@ class Context(models.Model):
     postImage=models.ImageField(blank=True)
     postDescription=models.CharField(max_length=15)
 
+    member1=models.CharField(max_length=10, null=True)
+    member2=models.CharField(max_length=10, null=True)
+
     notice=models.CharField(max_length=20, null=True)
     todo1=models.CharField(max_length=20, null=True)
     todo2=models.CharField(max_length=20, null=True)

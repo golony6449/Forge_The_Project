@@ -141,3 +141,16 @@ def edit(request, post_id):
     return render(request, 'test/write.html', paraDic)
 
 # TODO: 프로젝트 페이지의 참여중인 사용자명 수정
+def join(request, post_id):
+    obj=Context.objects.get(postID=post_id)
+    if obj.member1 is None:
+        obj.member1=request.user.username
+        obj.save()
+    elif obj.member2 is None:
+        obj.member2=request.user.username
+        obj.save()
+    else:
+        pass
+    #TODO: 슬롯이 다 찬 경우 예외처리 (에러페이지로 리다이렉트)
+
+    return HttpResponseRedirect('/detail/' + str(post_id))

@@ -16,6 +16,8 @@
   <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
   <script src="{% static 'js/utils.js' %}"></script>
 
+  <script src="{% static 'js/customjavascript.js' %}"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script type="text/javascript">
@@ -82,7 +84,8 @@
         <!--</a>-->
 
         <div class="site_title">
-        <a href="/" style="font-size : 15px; color : white; text-decoration:none;"><img src="{% static "Demo/Icon/Forge-resize50.png" %}" alt="Forge.png">
+      <a href="/" style="font-size : 15px; color : white; text-decoration:none;">
+        <img src="{% static "Demo/Icon/Forge-resize50.png" %}" alt="Forge.png">
         <span>&nbsp;&nbsp;<span>Forge The Project</span>
       </a>
       </div>
@@ -99,21 +102,30 @@
     </div>
     <div class="right-main">
       <div class="nav justify-content-end">
+
+        {% if user.username == post.userID %}
         <li class="nav-item">
           <a class="nav-link active" href="{% url 'edit' post_id=post.postID %}">수정하기</a>
         </li>
+
+        {% else %}
         <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
+          <a class="nav-link active" href="{% url 'join' post_id=post.postID %}">참여하기</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+
+        {% endif %}
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link active" href="#">Active</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link" href="#">Link</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link" href="#">Link</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link disabled" href="#">Disabled</a>-->
+        <!--</li>-->
       </div>
 
       <!--content-->
@@ -168,8 +180,9 @@
                             <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
                           </div>
                           <div class="col-md-10 col-sm-10 col-xs-12">
-                            <pre>Name : Park Seong-heum       Field : Server</pre>
-                            <pre>Principal Software Engineer  Language : Everything</pre>
+                            <p>Name : {{ post.userID }}</p>
+                            <!--<pre>Name : Park Seong-heum       Field : Server</pre>-->
+                            <!--<pre>Principal Software Engineer  Language : Everything</pre>-->
                           </div>
                         </div>
                       </div>
@@ -178,11 +191,12 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-2 col-sm-2 col-xs-12">
-                            <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
+                            <!--<img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">-->
                           </div>
                           <div class="col-md-10 col-sm-10 col-xs-12">
-                            <pre>Name : Kim Yun-gi            Field : WEB</pre>
-                            <pre>Senior Software Engineer     Language : Everything</pre>
+                            <p>{% if post.member1 %} Name : {{ post.member1 }} {% else %} Blank {% endif %}</p>
+                            <!--<pre>Name : Kim Yun-gi            Field : WEB</pre>-->
+                            <!--<pre>Senior Software Engineer     Language : Everything</pre>-->
                           </div>
                         </div>
                       </div>
@@ -191,11 +205,12 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-2 col-sm-2 col-xs-12">
-                            <img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">
+                            <!--<img src="{% static 'Demo/Icon/Forge-black.png' %}" alt="IMG"style="padding-left:35px;">-->
                           </div>
                           <div class="col-md-10 col-sm-10 col-xs-12">
-                            <pre>Name : Moon Yun-gi           Field : Design</pre>
-                            <pre>Junior Software Engineer     Language : Everything</pre>
+                            <p>{% if post.member2 %} Name : {{ post.member2 }} {% else %} Blank {% endif %}</p>
+                            <!--<pre>Name : Moon Yun-gi           Field : Design</pre>-->
+                            <!--<pre>Junior Software Engineer     Language : Everything</pre>-->
                           </div>
                         </div>
                       </div>
