@@ -26,9 +26,18 @@
 
 <div>
     <img src="{% static 'demo/icon/error.png' %}" class="welcome-contents"
-         style="width: 25%; height: 25%; margin-left: auto; margin-right: auto; display: block;">
+         style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; display: block;">
     <p style="text-align: center">죄송합니다. 오류가 발생했습니다.</p>
+
+    {% if errCode == 1 %}
     <p style="text-align: center">남은 멤버 슬롯이 없습니다. 프로젝트 관리자에게 문의하세요.</p>
+    {% elif errCode == 2 %}
+    <p style="text-align: center">권한이 없습니다. 로그인을 먼저 해 주세요.</p>
+    {% elif errCode == 3 %}
+    <p style="text-align: center">이미 존재하는 ID 입니다.</p>
+    {% elif errCode == 4 %}
+    <p style="text-align: center">일치하는 ID/PW가 없습니다.</p>
+    {% endif %}
 </div>
 {% endblock %}
 
