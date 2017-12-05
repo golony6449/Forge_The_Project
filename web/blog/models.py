@@ -23,6 +23,10 @@ class Context(models.Model):
     postImage=models.ImageField(blank=True)
     postDescription=models.CharField(max_length=15)
 
+    recentChangedBy=models.TextField(max_length=10)
+    recentChangedTitle=models.TextField(max_length=10)
+    recentChangedDescription=models.TextField(max_length=10)
+
     member1=models.CharField(max_length=10, null=True)
     member2=models.CharField(max_length=10, null=True)
 

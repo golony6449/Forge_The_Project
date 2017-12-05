@@ -91,6 +91,7 @@
       </div>
 
         <div class="left-menu-contents" style="text-align:center; order: 2;">
+          <div class="card-body">
             <p></p>
             <img class="card-img-top" style="width:90%;" src="{% static 'images/' %}{{post.postImage}}">
             <p></p>
@@ -98,22 +99,38 @@
             <p>팀장 {{ post.userID }}</p>
             <p>{{ post.postDescription }}</p>
             <p></p>
+          </div>
         </div>
     </div>
     <div class="right-main">
       <div class="nav justify-content-end">
 
         {% if user.username == post.userID %}
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'edit' post_id=post.postID %}">수정하기</a>
-        </li>
-
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link active" href="{% url 'edit' post_id=post.postID %}">수정하기</a>-->
+        <!--</li>-->
+          <li class="nav-item">
+            <button class="btn btn-outline-primary Application" onclick="location.href='{% url 'edit' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">수정하기</button>
+          </li>
+        {% elif user.username == post.member1 or user.username == post.member2 %}
+          <!--<li class="nav-item">-->
+            <!--<a class="nav-link active" href="#">탈퇴하기</a>-->
+          <!--</li>-->
+          <li class="nav-item">
+            <button class="btn btn-outline-danger Application" onclick="location.href='{% url 'quit' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">그만하기</button>
+          </li>
         {% else %}
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'join' post_id=post.postID %}">참여하기</a>
-        </li>
-
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link active" href="{% url 'join' post_id=post.postID %}">참여하기</a>-->
+        <!--</li>-->
+          <li class="nav-item">
+            <button class="btn btn-outline-primary Application" onclick="location.href='{% url 'edit' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">수정하기</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-success Application" onclick="location.href='{% url 'join' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">참여하기</button>
+          </li>
         {% endif %}
+
         <!--<li class="nav-item">-->
           <!--<a class="nav-link active" href="#">Active</a>-->
         <!--</li>-->
@@ -260,42 +277,42 @@
                   <div class="block">
                     <div class="block_content">
                       <h2 class="title">
-                        <a>Bug fixed</a>
+                        <a>{{ post.recentChangedTitle}}</a>
                       </h2>
                       <div class="byline">
-                        <span>13 hours ago</span> by <a>Mr.Park</a>
+                        <!--<span>13 hours ago</span>--> by <a>{{ post.recentChangedBy }}</a>
                       </div>
-                      <p class="excerpt">Django bug fix
+                      <p class="excerpt">{{ post.recentChangedDescription }}
                       </p>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div class="block">
-                    <div class="block_content">
-                      <h2 class="title">
-                        <a>Complete Index Page</a>
-                      </h2>
-                      <div class="byline">
-                        <span>13 hours ago</span> by <a>Mr.Moon</a>
-                      </div>
-                      <p class="excerpt">Title is Detail</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="block">
-                    <div class="block_content">
-                      <h2 class="title">
-                        <a>Make Registration Modal</a>
-                      </h2>
-                      <div class="byline">
-                        <span>13 hours ago</span> by <a>Mr.Kim</a>
-                      </div>
-                      <p class="excerpt">Title is Detail</p>
-                    </div>
-                  </div>
-                </li>
+                <!--<li>-->
+                  <!--<div class="block">-->
+                    <!--<div class="block_content">-->
+                      <!--<h2 class="title">-->
+                        <!--<a>Complete Index Page</a>-->
+                      <!--</h2>-->
+                      <!--<div class="byline">-->
+                        <!--<span>13 hours ago</span> by <a>Mr.Moon</a>-->
+                      <!--</div>-->
+                      <!--<p class="excerpt">Title is Detail</p>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<div class="block">-->
+                    <!--<div class="block_content">-->
+                      <!--<h2 class="title">-->
+                        <!--<a>Make Registration Modal</a>-->
+                      <!--</h2>-->
+                      <!--<div class="byline">-->
+                        <!--<span>13 hours ago</span> by <a>Mr.Kim</a>-->
+                      <!--</div>-->
+                      <!--<p class="excerpt">Title is Detail</p>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</li>-->
               </ul>
             </div>
           </div>

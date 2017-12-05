@@ -58,6 +58,10 @@ def regpost(request, post_id=-1):
                           todo1=request.POST['todo1'], todo2=request.POST['todo2'], todo3=request.POST['todo3'],
                           todo4=request.POST['todo4'], todo5=request.POST['todo5'], notice=request.POST['notice'])
         print(request.FILES)
+        Post.recentChangedBy = request.user.username
+        Post.recentChangedTitle = 'New project Created'
+        Post.recentChangedDescription = "Let's do something NEW"
+
         Post.save()
     else:
         Post=Context.objects.get(postID=post_id)
@@ -72,6 +76,10 @@ def regpost(request, post_id=-1):
         Post.todo4=request.POST['todo4']
         Post.todo5=request.POST['todo5']
         Post.notice=request.POST['notice']
+        Post.recentChangedBy = request.user.username
+        Post.recentChangedTitle = 'edit Something'
+        Post.recentChangedDescription = "Please Check Changelog"
+
         Post.save()
 
     return HttpResponseRedirect('/detail/'+str(Post.postID))
@@ -150,17 +158,46 @@ def edit(request, post_id):
 
 # TODO: 프로젝트 페이지의 참여중인 사용자명 수정
 def join(request, post_id):
+    error = False
     obj=Context.objects.get(postID=post_id)
     if obj.member1 is None:
         obj.member1=request.user.username
+        obj.recentChangedBy = request.user.username
+        obj.recentChangedTitle = request.user.username + ' joined'
+        obj.recentChangedDescription = 'New people participated'
         obj.save()
+
+
     elif obj.member2 is None:
         obj.member2=request.user.username
+        obj.recentChangedBy = request.user.username
+        obj.recentChangedTitle = request.user.username + ' joined'
+        obj.recentChangedDescription = 'New people participated'
         obj.save()
     else:
-        paraDic={'errCode': 1}
-        return render(request,'test/error.html', paraDic)
+        paraDic = {'errCode': 1}
+        error = True
+
     #TODO: 슬롯이 다 찬 경우 예외처리 (에러페이지로 리다이렉트)
 
-    return HttpResponseRedirect('/detail/' + str(post_id))
+    if error == False:
+        return HttpResponseRedirect('/detail/' + str(post_id))
+    else:
+        return render(request, 'test/error.html', paraDic)
 
+def quit(request, post_id):
+    obj=Context.objects.get(postID=post_id)
+    if obj.member1==request.user.username:
+        obj.member1=None
+        obj.recentChangedBy = request.user.username
+        obj.recentChangedTitle = request.user.username + ' quit this Project'
+        obj.recentChangedDescription = 'Sayonara'
+        obj.save()
+    elif obj.member2==request.user.username:
+        obj.member2=None
+        obj.recentChangedBy = request.user.username
+        obj.recentChangedTitle = request.user.username + ' quit this Project'
+        obj.recentChangedDescription = 'Sayonara'
+        obj.save()
+
+    return HttpResponseRedirect('/detail/'+str(post_id))
