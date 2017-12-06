@@ -35,12 +35,6 @@
         <form action="{% url 'regchange' post_id=post.postID %}" method="post" id="posting" enctype="multipart/form-data">
           {% csrf_token %}
 
-          <!--프로젝트 요약-->
-          <div class="form-group">
-            <label for="summary">Summary</label>
-            <textarea class="form-control" name="description" rows="1" cols="80" required>{{ post.postDescription }}</textarea>
-          </div>
-          <!--프로젝트 내용-->
           <div class="form-group">
             <label for="description">Description</label>
             <textarea class="form-control" name="contents" rows="10" cols="80" required>{{ post.contents }}</textarea>
