@@ -16,9 +16,6 @@ def index(request):
     # print(request.user)
     return render(request, 'blog/index.html',paraDic)
 
-def createPost(request):
-    return render(request, 'blog/write.html')
-
 def login(request):
     # print('id',request.POST['id'], 'pass',request.POST['pwd'])
     user=authenticate(request,username=request.POST['id'], password=request.POST['pwd'])
@@ -45,31 +42,36 @@ def write(request):
         return render(request,'test/error.html', paraDic)
 
     paraDic={'post':None, 'edit':False}
-    return render(request,'test/write.html', paraDic)
+    return render(request,'blog/write.html', paraDic)
 
 def regpost(request, post_id=-1):
     if not request.user.is_authenticated():
         paraDic={'errCode': 2}
         return render(request,'test/error.html', paraDic)
 
-    if post_id==-1:
+    if post_id==-1:     ## 작성
         Post = Context(postName=request.POST['title'],contents=request.POST['contents'], userID=request.user,
-                          postDescription=request.POST['description'], postImage=request.FILES['image'],
-                          todo1=request.POST['todo1'], todo2=request.POST['todo2'], todo3=request.POST['todo3'],
-                          todo4=request.POST['todo4'], todo5=request.POST['todo5'], notice=request.POST['notice'])
+                      postDescription=request.POST['description'], postImage=request.FILES['image'])
         print(request.FILES)
+
+
+        Post.todo1=None
+        Post.todo2=None
+        Post.todo3=None
+        Post.todo4=None
+        Post.todo5=None
+        Post.notice=None
+
         Post.recentChangedBy = request.user.username
         Post.recentChangedTitle = 'New project Created'
         Post.recentChangedDescription = "Let's do something NEW"
 
         Post.save()
-    else:
+    else:       ## 수정
         Post=Context.objects.get(postID=post_id)
-        Post.postName=request.POST['title']
+        # Post.postName=request.POST['title']
         Post.contents=request.POST['contents']
-        # Post.userID=request.user
         Post.postDescription=request.POST['description']
-        #Post.postImage=request.FILES['image']
         Post.todo1=request.POST['todo1']
         Post.todo2=request.POST['todo2']
         Post.todo3=request.POST['todo3']
@@ -154,7 +156,7 @@ def edit(request, post_id):
 
     paraDic={'post':obj, 'edit':True}
 
-    return render(request, 'test/write.html', paraDic)
+    return render(request, 'blog/write.html', paraDic)
 
 # TODO: 프로젝트 페이지의 참여중인 사용자명 수정
 def join(request, post_id):

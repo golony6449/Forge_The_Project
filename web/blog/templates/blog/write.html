@@ -1,0 +1,115 @@
+{% extends 'parent/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Forge The Project{% endblock %}
+
+
+
+{% block javascript %}
+  <link rel="stylesheet" href="{% static 'css/customforwrite.css' %}">
+  <meta name="viewport" content="width=device-width" , initial-scale="1">
+
+  <script type="text/javascript">
+    $(document).on('click', '.browse', function() {
+      var file = $(this).parent().parent().parent().find('.file');
+      file.trigger('click');
+    });
+    $(document).on('change', '.file', function() {
+      $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+<br/>
+  <div class="container">
+    <div class="row">
+      <!--가운데 정렬-->
+      <div class="col-lg-8 mx-auto">
+
+        {% if edit == True %}
+
+        <form action="{% url 'regchange' post_id=post.postID %}" method="post" id="posting" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <!--프로젝트 요약-->
+          <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea class="form-control" name="description" rows="1" cols="80" required>{{ post.postDescription }}</textarea>
+          </div>
+          <!--프로젝트 내용-->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="contents" rows="10" cols="80" required>{{ post.contents }}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Necessary working</label>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="todo1" class="form-control" value="{{ post.todo1 }}" placeholder="To do #1" style="width:14em;">
+            </ul>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="todo2" class="form-control" value="{{ post.todo2 }}" placeholder="To do #2" style="width:14em;">
+            </ul>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="todo3" class="form-control" value="{{ post.todo3 }}" placeholder="To do #3" style="width:14em;">
+            </ul>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="todo4" class="form-control" value="{{ post.todo4 }}" placeholder="To do #4" style="width:14em;">
+            </ul>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="todo5" class="form-control" value="{{ post.todo5 }}" placeholder="To do #5" style="width:14em;">
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Notice</label>
+            <ul style="margin-bottom : 3px;">
+              <input type="text" name="notice" class="form-control" value="{{ post.notice }}" placeholder="Notice to Team" style="width:14em;">
+            </ul></div>
+
+          <button class="btn btn-secondary" type="submit" name="button" style="float:right">submit</button>
+        </form>
+
+        {% else %}
+
+        <form action="{% url 'regpost' %}" method="post" id="posting" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div class="form-group row">
+            <!--프로젝트 타이틀-->
+            <label for="Title" class="col-md-2 col-sm-2 col-xs-12" style="padding-right:0">Project Title</label>
+            <input type="text" class="form-control col-md-9 col-sm-9 col-xs-12" name="title" placeholder="Your Project Title" required >
+          </div>
+          <!--프로젝트 요약-->
+          <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea class="form-control" name="description" rows="1" cols="80" required></textarea>
+          </div>
+          <!--프로젝트 내용-->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="contents" rows="10" cols="80" required></textarea>
+          </div>
+          <!--프로젝트 이미지-->
+          <div class="input-group row">
+            <label for="Title" class="col-md-3 col-sm-3 col-xs-12" style="padding-right:0">Project Image</label>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <!--<input type="file" name="image" class="file" style="visibility: hidden;position: absolute;">-->
+              <div class="row">
+                <input type="file" name="image" class="file" required>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary" type="submit" name="button" style="float:right">submit</button>
+        </form>
+
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
