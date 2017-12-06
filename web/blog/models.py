@@ -22,6 +22,7 @@ class Context(models.Model):
     userID=models.CharField(max_length=10)
     postImage=models.ImageField(blank=True)
     postDescription=models.CharField(max_length=15)
+    projectDuration=models.IntegerField()
 
     recentChangedBy=models.TextField(max_length=10)
     recentChangedTitle=models.TextField(max_length=10)

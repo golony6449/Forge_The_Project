@@ -7,6 +7,8 @@ from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import sessions
+from datetime import datetime
+from django.utils.timezone import utc
 
 # Create your views here.
 def index(request):
@@ -71,7 +73,7 @@ def regpost(request, post_id=-1):
         Post=Context.objects.get(postID=post_id)
         # Post.postName=request.POST['title']
         Post.contents=request.POST['contents']
-        Post.postDescription=request.POST['description']
+        # Post.postDescription=request.POST['description']
         Post.todo1=request.POST['todo1']
         Post.todo2=request.POST['todo2']
         Post.todo3=request.POST['todo3']
@@ -108,7 +110,7 @@ def viewPost(request,post_id):
     obj=Context.objects.get(postID=post_id)
 
     paraDic = {'title':obj.postName ,'contents':obj.contents, 'id':obj.postID,
-               'author':obj.userID,'when':obj.postDate, 'path':obj.postImage}
+               'author':obj.userID,'when':obj.postDate, 'path':obj.postImage, 'todoCnt': cnt}
 
     return render(request, 'test/post.html', paraDic)
 
@@ -145,10 +147,28 @@ def detail(request,post_id):
         return render(request,'test/error.html', paraDic)
 
     obj=Context.objects.get(postID=post_id)
+    # print((datetime.utcnow().replace(tzinfo=utc) - obj.postDate).days)
+    pastDays=(datetime.utcnow().replace(tzinfo=utc) - obj.postDate).days
+    cnt = 5
 
-    total=5
+    if obj.todo1 is None or obj.todo1 == '' or obj.todo1 == 'None':
+        cnt = cnt - 1
+        print('minus1')
+    if obj.todo2 is None or obj.todo2 == '' or obj.todo2 == 'None':
+        cnt = cnt - 1
+        print('minus2')
+    if obj.todo3 is None or obj.todo3 == '' or obj.todo3 == 'None':
+        cnt = cnt - 1
+        print('minus3')
+    if obj.todo4 is None or obj.todo4 == '' or obj.todo4 == 'None':
+        cnt = cnt - 1
+        print('minus4')
+    if obj.todo5 is None or obj.todo5 == '' or obj.todo5 == 'None':
+        cnt = cnt - 1
+        print('minus5')
+    print(cnt)
 
-    paraDic={'post':obj, 'value1':3,'value2':6}
+    paraDic={'post':obj, 'todoCnt':cnt, 'pastDays': pastDays}
     return render(request, 'blog/project.html',paraDic)
 
 def edit(request, post_id):
