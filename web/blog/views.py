@@ -201,3 +201,6 @@ def quit(request, post_id):
         obj.save()
 
     return HttpResponseRedirect('/detail/'+str(post_id))
+
+def game(request):
+    return render(request,'blog/game.html')

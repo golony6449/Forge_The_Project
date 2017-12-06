@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^regpost/(?P<post_id>[0-9]+)/$', views.regpost, name='regchange'),
     url(r'^join/(?P<post_id>[0-9]+)/$', views.join, name='join'),
     url(r'^quit/(?P<post_id>[0-9]+)/$', views.quit, name='quit'),
+    url(r'^game/$', views.game, name='game'),
 
 
 

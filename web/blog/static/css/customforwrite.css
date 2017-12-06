@@ -1,0 +1,18 @@
+@import url('https://code.cdn.mozilla.net/fonts/zilla-slab.css');
+
+label{
+  font-family: 'Zilla Slab', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  padding-top: 8px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  /*text-align: right;*/
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Zilla Slab', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
