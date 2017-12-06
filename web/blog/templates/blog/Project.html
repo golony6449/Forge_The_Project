@@ -124,9 +124,6 @@
           <!--<a class="nav-link active" href="{% url 'join' post_id=post.postID %}">참여하기</a>-->
         <!--</li>-->
           <li class="nav-item">
-            <button class="btn btn-outline-primary Application" onclick="location.href='{% url 'edit' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">수정하기</button>
-          </li>
-          <li class="nav-item">
             <button class="btn btn-outline-success Application" onclick="location.href='{% url 'join' post_id=post.postID %}'" type="button" style="position : relative; top : 0.6rem; display : block">참여하기</button>
           </li>
         {% endif %}
