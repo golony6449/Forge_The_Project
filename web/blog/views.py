@@ -53,7 +53,8 @@ def regpost(request, post_id=-1):
 
     if post_id==-1:     ## 작성
         Post = Context(postName=request.POST['title'],contents=request.POST['contents'], userID=request.user,
-                      postDescription=request.POST['description'], postImage=request.FILES['image'])
+                        postDescription=request.POST['description'], postImage=request.FILES['image'],
+                        projectDuration=request.POST['duration'])
         print(request.FILES)
 
 

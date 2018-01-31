@@ -63,7 +63,8 @@
             <label for="description">Notice</label>
             <ul style="margin-bottom : 3px;">
               <input type="text" name="notice" class="form-control" value="{{ post.notice }}" placeholder="Notice to Team" style="width:14em;">
-            </ul></div>
+            </ul>
+          </div>
 
           <button class="btn btn-secondary" type="submit" name="button" style="float:right">submit</button>
         </form>
@@ -98,6 +99,14 @@
               </div>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="description">작업기간 (일수)</label>
+            <ul style="margin-bottom : 3px;">
+              <input type="number" name="duration" class="form-control"  placeholder="Duration (Days)" style="width:14em;"required>
+            </ul>
+          </div>
+
           <button class="btn btn-secondary" type="submit" name="button" style="float:right">submit</button>
         </form>
 
